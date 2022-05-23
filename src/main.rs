@@ -275,7 +275,7 @@ fn plus_one(x: Option<i32>) -> Option<i32> {
     }
 }
 
-fn main() {
+fn main_20220523() {
     let mut f1 = File::from("f1.txt");
     open(&mut f1);
     //read(&mut f1, &mut vec![]);
@@ -521,5 +521,186 @@ fn main() {
         }
 
         println!("\t{:?} = {}", a, sum);
+    }
+}
+
+enum Direction {
+    East,
+    West,
+    North,
+    South,
+}
+
+enum IpAddr {
+    Ipv4,
+    Ipv6,
+}
+
+enum Action {
+    Say(String),
+    MoveTo(i32, i32),
+    ChangeColorRGB(u16, u16, u16),
+}
+
+enum MyEnum {
+    Foo,
+    Bar,
+}
+
+fn print_coordinates(&(x, y): &(i32, i32)) {
+    println!("{}:{}", x, y);
+}
+
+enum Message {
+    Quit,
+    Move { x: i32, y: i32 },
+    Write(String),
+    ChangeColor(i32, i32, i32),
+}
+
+#[derive(Debug)]
+struct Point {
+    x: i32,
+    y: i32,
+}
+
+fn main() {
+    let condition = true;
+    let number = if condition { 5 } else { 6 };
+
+    println!("the v = {}", number);
+
+    for i in 1..=5 {
+        if i == 2 {
+            continue;
+        }
+        if i == 3 {
+            break;
+        }
+        println!("{}", i)
+    }
+
+    let a = [4, 3, 2, 1];
+    for (i, v) in a.iter().enumerate() {
+        println!("{}:{}", i + 1, v);
+    }
+
+    let mut n = 0;
+    while n <= 5 {
+        println!("{}", n);
+        n = n + 1;
+    }
+
+    println!("weawea");
+
+    let mut n = 0;
+    loop {
+        if n > 5 {
+            break;
+        }
+        println!("{}", n);
+        n += 1;
+    }
+
+    println!("weer");
+
+    let dire = Direction::South;
+    match dire {
+        Direction::East => println!("East"),
+        Direction::North | Direction::South => {
+            println!("so");
+        }
+        _ => println!("west"),
+    };
+
+    let ip1 = IpAddr::Ipv6;
+    let ip_str = match ip1 {
+        IpAddr::Ipv4 => "127.0.0.1",
+        _ => "::1",
+    };
+
+    println!("{}", ip_str);
+
+    let actions = [
+        Action::Say("Hello Rust".to_string()),
+        Action::MoveTo(1, 2),
+        Action::ChangeColorRGB(255, 255, 0),
+    ];
+    for action in actions {
+        match action {
+            Action::Say(s) => {
+                println!("{}", s);
+            }
+            Action::MoveTo(x, y) => {
+                println!("{},{}", x, y);
+            }
+            Action::ChangeColorRGB(r, g, _) => {
+                println!("{};{};0", r, g,)
+            }
+        }
+    }
+
+    let v = Some(3u8);
+    match v {
+        Some(3) => println!("three"),
+        _ => (),
+    };
+
+    if let Some(3) = v {
+        println!("three");
+    }
+
+    let v = vec![MyEnum::Foo, MyEnum::Bar, MyEnum::Foo];
+    v.iter().filter(|x| matches!(x, MyEnum::Foo));
+
+    let foo = 'f';
+    assert!(matches!(foo,'A'..='Z'|'a'..='z'));
+
+    let bar = Some(4);
+    assert!(matches!(bar,Some(x) if x>2));
+
+    let mut stack = Vec::new();
+
+    stack.push(1);
+    stack.push(2);
+    stack.push(3);
+
+    while let Some(top) = stack.pop() {
+        println!("{}", top);
+    }
+
+    let point = (3, 5);
+    print_coordinates(&point);
+
+    let msg = Message::ChangeColor(0, 160, 255);
+    match msg {
+        Message::Quit => {
+            println!("quit");
+        }
+        Message::Move { x, y } => {
+            println!("{}:{}", x, y);
+        }
+        Message::Write(text) => println!("Text {}", text),
+        Message::ChangeColor(r, g, b) => {
+            println!("{}:{}:{}", r, g, b);
+        }
+    }
+
+    let p @ Point { x: px, y: py } = Point { x: 10, y: 23 };
+    println!("x:{},y:{}", px, py);
+    println!("{:?}", p);
+
+    let point = Point { x: 10, y: 5 };
+    if let p @ Point { x: 10, y } = point {
+        println!("{}:{:?}", y, p);
+    } else {
+        println!("efdfss");
+    }
+
+    match 1 {
+        num @ (1 | 2) => {
+            println!("{}", num);
+        }
+        _ => {}
     }
 }
