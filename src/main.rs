@@ -5,6 +5,7 @@ extern crate core;
 use num::complex::Complex;
 use std::fmt::Debug;
 use std::io;
+use std::process::Output;
 
 type File = String;
 
@@ -564,7 +565,7 @@ struct Point {
     y: i32,
 }
 
-fn main() {
+fn main_20220524() {
     let condition = true;
     let number = if condition { 5 } else { 6 };
 
@@ -703,4 +704,99 @@ fn main() {
         }
         _ => {}
     }
+}
+
+struct Circle {
+    x: f64,
+    y: f64,
+    redius: f64,
+}
+
+impl Circle {
+    fn new(x: f64, y: f64, redius: f64) -> Circle {
+        Circle {
+            x: x,
+            y: y,
+            redius: redius,
+        }
+    }
+
+    fn area(&self) -> f64 {
+        std::f64::consts::PI * (self.redius * self.redius)
+    }
+}
+
+// #[derive(Debug)]
+// struct Rectangle {
+//     width: u32,
+//     height: u32,
+// }
+
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+}
+
+pub struct Rectangle1 {
+    width: u32,
+    height: u32,
+}
+
+impl Rectangle1 {
+    pub fn new(width: u32, height: u32) -> Self {
+        Rectangle1 { width, height }
+    }
+    pub fn width(&self) -> u32 {
+        return self.width;
+    }
+}
+
+fn add2<T: std::ops::Add<Output = T>>(a: T, b: T) -> T {
+    a + b
+}
+
+// fn largest1<T>(list: &[T]) -> T {
+//     let mut largest = list[0];
+//
+//     for &item in list.iter() {
+//         if item > largest {
+//             largest = item;
+//         }
+//     }
+//     largest
+// }
+
+struct Point1<T> {
+    x: T,
+    y: T,
+}
+
+fn display_array<T: std::fmt::Debug, const N: usize>(arr: &[T; N]) {
+    println!("{:?}", arr);
+}
+
+fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+
+    println!("{} ll", rect1.area());
+
+    let rect1 = Rectangle1::new(30, 50);
+    println!("{} ll", rect1.width());
+
+    println!("i8: {}", add2(2i8, 3i8));
+    println!("i32{}", add2(20, 30));
+    println!("f64{}", add2(1.23, 1.23));
+
+    let integer = Point1 { x: 5, y: 10 };
+    let float = Point1 { x: 1.0, y: 4.0 };
+
+    let arr: [i32; 3] = [1, 2, 3];
+    display_array(&arr);
+
+    let arr: [i32; 2] = [1, 2];
+    display_array(&arr);
 }
