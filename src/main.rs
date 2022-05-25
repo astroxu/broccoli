@@ -799,4 +799,9 @@ fn main() {
 
     let arr: [i32; 2] = [1, 2];
     display_array(&arr);
+
+    let v: Vec<i32> = Vec::new();
+
+    let mut v1 = Vec::new();
+    v.push(1);
 }
