@@ -2,8 +2,24 @@
 name = "broccoli"
 version = "0.1.0"
 edition = "2021"
+authors = ["sean seanxu24@outlook.com"]
+license = "MIT"
+readme = "README.md"
+repository = ""
+publish = false
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[profile.release]
+panic = 'abort'
+
 [dependencies]
 num = "0.4.0"
+rand = "0.8.3"
+axum = { version="0.5.17", features = ["ws"]}
+anyhow = "1.0"
+futures = "0.3"
+serde = { version = "1.0", features = ["derive"] }
+tokio = { version = "1.0", features = ["full"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
