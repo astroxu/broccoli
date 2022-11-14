@@ -10,3 +10,4 @@
 **/*.rs.bk
 
 /.idea
+/try-auxm/response/target/
