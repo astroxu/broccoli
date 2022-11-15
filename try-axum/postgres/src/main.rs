@@ -15,7 +15,19 @@ pub struct CreateAccount {
     pub balance: i32,
 }
 
+/// db config
+fn get_cfg() -> deadpool_postgres::Config {
+    let mut cfg = deadpool_postgres::Config::new();
+    cfg.user = Some("ritlluxg".to_string());
+    cfg.password = Some("rNJWKAbFAsra01_mgpGUOPBMcxY7rOhW".to_string());
+    cfg.db = Some("ritlluxg".to_string());
+    cfg.host = Some("lucky.db.elephantsql.com/ritlluxg".to_string());
+    cfg.port = Some(5432);
+    cfg
+}
 
+//  get db link
+//async fn get_client
 
 fn main() {
     println!("Hello, world!");
