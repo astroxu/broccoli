@@ -1,6 +1,5 @@
 use std::convert::Infallible;
 
-use axum::response::Response;
 use axum::{
     body::{Bytes, Full},
     response::IntoResponse,
