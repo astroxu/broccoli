@@ -1,12 +1,12 @@
 [package]
-name = "broccoli"
+name = "broccoli_axum_response"
 version = "0.1.0"
 edition = "2021"
 authors = ["sean seanxu24@outlook.com"]
 license = "MIT"
 readme = "README.md"
 repository = "https://github.com/seanxu24/broccoli"
-homepage = "https://github.com/seanxu24/broccoli"
+homepage = "https://github.com/seanxu24/broccoli/try-axum/response"
 description = "A Rust Project"
 publish = false
 
