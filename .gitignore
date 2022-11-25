@@ -2,6 +2,7 @@
 # will have compiled files and executables
 */target/
 /todo-axum/target/
+/short-url-axum/target/
 /try-axum/response/target/
 /try-axum/request/target/
 /try-axum/cookie/target/
@@ -24,6 +25,7 @@
 # Cargo.lock
 */Cargo.lock
 /todo-axum/Cargo.lock
+/short-url-axum/Cargo.lock
 /try-axum/response/Cargo.lock
 /try-axum/request/Cargo.lock
 /try-axum/cookie/Cargo.lock
